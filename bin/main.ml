@@ -1,3 +1,4 @@
-open Days
+open Views.Main
+open Hello
 
-let () = Dream.run (fun _ -> Hello.hello "Someone Else" |> Dream.html)
+let () = Dream.run (fun _ -> hello "Someone Else" |> main |> Dream.html)
