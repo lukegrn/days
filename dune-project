@@ -19,7 +19,11 @@
  (name days)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml)
+ (depends
+   ocaml
+   dream
+   ppx_expect
+   ppx_inline_test)
  (tags
   ("add topics" "to describe" your project)))
 
