@@ -5,26 +5,26 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github lukegrn/days))
 
-(authors "Author Name <author@example.com>")
+(authors "Luke Green <luke@lukegreen.xyz>")
 
-(maintainers "Maintainer Name <maintainer@example.com>")
+(maintainers "Luke Green <luke@lukegreen.xyz>")
 
-(license LICENSE)
+(license MIT)
 
-(documentation https://url/to/documentation)
+(documentation "")
 
 (package
  (name days)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "A web application to host my \"A Photo a Day\" project")
+ (description "")
  (depends
    ocaml
    dream
    ppx_expect
    ppx_inline_test)
  (tags
-  ("add topics" "to describe" your project)))
+  (website "server side" photography images)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html

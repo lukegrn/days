@@ -5,7 +5,7 @@ description: ""
 maintainer: ["Luke Green <luke@lukegreen.xyz>"]
 authors: ["Luke Green <luke@lukegreen.xyz>"]
 license: "MIT"
-tags: ["website" "server side rendered" "photography" "images"]
+tags: ["website" "server side" "photography" "images"]
 homepage: "https://github.com/lukegrn/days"
 doc: ""
 bug-reports: "https://github.com/lukegrn/days/issues"
@@ -31,5 +31,5 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/username/reponame.git"
+dev-repo: "git+https://github.com/lukegrn/days.git"
 x-maintenance-intent: ["(latest)"]
