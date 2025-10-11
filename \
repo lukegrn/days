@@ -1,0 +1,4 @@
+type target_options = Blank | Self
+
+let a c ~link ?(target = Blank) =
+  "<a href=\"" ^ link ^ "\" target=\"" ^ target ^ "\">" ^ c "</a>"
