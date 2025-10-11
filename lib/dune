@@ -1,4 +1,3 @@
+(include_subdirs qualified)
 (library
- (name days)
- (inline_tests) 
- (preprocess (pps ppx_expect ppx_inline_test)))
+ (name days))
