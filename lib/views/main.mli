@@ -1,1 +1,1 @@
-val main : string -> string
+val main : string

@@ -1,4 +1,4 @@
 (executable
  (public_name days)
  (name main)
- (libraries hello views dream))
+ (libraries views dream))
