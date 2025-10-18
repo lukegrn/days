@@ -1,0 +1,20 @@
+{{define "body"}}
+<form action="" enctype="multipart/form-data" method="POST">
+  <input name="dream.csrf" type="hidden" value="ABv1PdcOp6i80AxdztjAi8IAjAHTlFyUrx24ozsIf7QPoOmEpg5J2tPN_3dTiaqQtLo-0H9Jh-cKjl6_nNG_lcwU8Cn58oevcXxh8TvC5voy">
+  <label for="picture"></label>
+  <input type="file" name="picture" id="picture" required="" accept="image/jpeg">
+  <br>
+  <label for="caption">Caption: </label>
+  <input type="text" name="caption" id="caption" required="">
+  <br>
+  <label for="date">Date: </label>
+  <input type="date" name="date" id="date" required="">
+  <br>
+  <label for="password">Password: </label>
+  <input type="password" name="password" id="password" required="">
+  <br>
+  <label for="submit"></label>
+  <input type="submit" name="submit" id="submit" required="">
+  <br>
+</form>
+{{end}}
