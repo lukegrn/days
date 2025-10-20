@@ -5,9 +5,20 @@ import (
 	"image/jpeg"
 	"io"
 	"math"
+	"strings"
 
 	"golang.org/x/image/draw"
 )
+
+type Img struct {
+	Date    string
+	Caption string
+	Path    string
+}
+
+func (i *Img) PreviewPath() string {
+	return strings.ReplaceAll(i.Path, ".jpg", "-resized.jpg")
+}
 
 func CreatePreview(r io.Reader, w io.Writer) error {
 	var src image.Image

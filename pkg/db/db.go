@@ -3,17 +3,13 @@ package db
 import (
 	"database/sql"
 	"fmt"
+
+	"github.com/lukegrn/days/pkg/img"
 	_ "github.com/mattn/go-sqlite3"
 )
 
 type Inst struct {
 	sql.DB
-}
-
-type img struct {
-	Date    string
-	Caption string
-	Path    string
 }
 
 var i *Inst = &Inst{}
@@ -71,7 +67,7 @@ func (i *Inst) PutImage(date, path, caption string) error {
 	return nil
 }
 
-func (i *Inst) GetImage(date string) (img, error) {
+func (i *Inst) GetImage(date string) (img.Img, error) {
 	var id string
 	var path string
 	var caption string
@@ -79,8 +75,28 @@ func (i *Inst) GetImage(date string) (img, error) {
 
 	err := row.Scan(&id, &path, &caption)
 	if err != nil {
-		return img{}, fmt.Errorf("Failed to get img: %s", err.Error())
+		return img.Img{}, fmt.Errorf("Failed to get img: %s", err.Error())
 	}
 
-	return img{Date: id, Path: path, Caption: caption}, nil
+	return img.Img{Date: id, Path: path, Caption: caption}, nil
+}
+
+func (i *Inst) GetAllImages() ([]img.Img, error) {
+	images := make([]img.Img, 0)
+	rows, err := i.Query(`SELECT date, path, caption FROM images ORDER BY date`)
+	if err != nil {
+		return images, fmt.Errorf("Failed to get images: %s", err.Error())
+	}
+
+	for rows.Next() {
+		image := img.Img{}
+		err = rows.Scan(&image.Date, &image.Path, &image.Caption)
+		if err != nil {
+			return images, fmt.Errorf("Failed to get images: %s", err.Error())
+		}
+
+		images = append(images, image)
+	}
+
+	return images, nil
 }

@@ -16,11 +16,6 @@ func ShowDay(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := struct {
-		Preview string
-		Full    string
-	}{Preview: img.Path, Full: img.Path}
-
 	t, err := template.ParseFiles("templates/base.html", "templates/img.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -28,5 +23,5 @@ func ShowDay(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t.Execute(w, data)
+	t.Execute(w, img)
 }

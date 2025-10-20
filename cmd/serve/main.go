@@ -49,6 +49,7 @@ func main() {
 
 	// Handlers
 	http.HandleFunc("/{$}", handlers.Index)
+	http.HandleFunc("GET /about", handlers.About)
 	http.HandleFunc("GET /upload", handlers.ShowUpload)
 	http.HandleFunc("POST /upload",
 		middleware.PasswordProtect(pwHash, handlers.HandleUpload))
