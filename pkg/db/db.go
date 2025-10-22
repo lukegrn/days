@@ -12,6 +12,12 @@ type Inst struct {
 	sql.DB
 }
 
+type ImgOverview struct {
+	PrevDate string
+	Cur      *img.Img
+	NextDate string
+}
+
 var i *Inst = &Inst{}
 
 func Get() *Inst {
@@ -67,18 +73,26 @@ func (i *Inst) PutImage(date, path, caption string) error {
 	return nil
 }
 
-func (i *Inst) GetImage(date string) (img.Img, error) {
-	var id string
-	var path string
-	var caption string
-	row := i.QueryRow(`SELECT date, path, caption FROM images WHERE date = ?`, date)
+func (i *Inst) GetImage(date string) (ImgOverview, error) {
+	imgOverview := ImgOverview{Cur: &img.Img{}}
+	row := i.QueryRow(`SELECT * FROM
+			(SELECT
+				IFNULL(LAG(date) OVER (ORDER BY date), '') as prev_date,
+				date as cur_date,
+				IFNULL (LEAD(date) OVER (ORDER BY date), '') as next_date,
+				path,
+				caption
+			FROM images)
+		WHERE cur_date= ? ;`, date)
 
-	err := row.Scan(&id, &path, &caption)
+	err := row.Scan(&imgOverview.PrevDate,
+		&imgOverview.Cur.Date, &imgOverview.NextDate, &imgOverview.Cur.Path, &imgOverview.Cur.Caption)
+
 	if err != nil {
-		return img.Img{}, fmt.Errorf("Failed to get img: %s", err.Error())
+		return ImgOverview{}, fmt.Errorf("Failed to get img: %s", err.Error())
 	}
 
-	return img.Img{Date: id, Path: path, Caption: caption}, nil
+	return imgOverview, nil
 }
 
 func (i *Inst) GetAllImages() ([]img.Img, error) {

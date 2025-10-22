@@ -1,6 +1,27 @@
 {{define "body"}}
-<h2>{{.Date}}</h2>
+<h2>{{.Cur.Date}}</h2>
 <h2><a href="/" class="close">x</a></h2>
-<img src="/static/{{.Path}}" />
-<p style="text-align: center">{{.Caption}}</p>
+
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+  "
+>
+  <img src="/static/{{.Cur.Path}}" />
+  <p style="text-align: center; position">{{.Cur.Caption}}</p>
+</div>
+
+<div>
+  {{if .PrevDate}}
+  <a href="/days/{{.PrevDate}}" class="nav left">←</a>
+  {{end}}
+</div>
+<div>
+  {{if .NextDate}}
+  <a href="/days/{{.NextDate}}" class="nav right">→</a>
+  {{end}}
+</div>
 {{end}}
