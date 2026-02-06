@@ -2,6 +2,12 @@
 <h2>{{.Cur.Date}}</h2>
 <h2><a href="/" class="close">x</a></h2>
 
+<meta property="og:title" content="{{.Cur.Date}}" />
+<meta
+  property="og:image"
+  content="https://days.lukegreen.xyz/static/{{.Cur.PreviewPath}}"
+/>
+
 <div
   style="
     display: flex;
