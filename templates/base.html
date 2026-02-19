@@ -8,6 +8,7 @@
   />
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Days - Luke Green</title>
     <style>
       :root {
@@ -78,6 +79,21 @@
       }
       p#quote {
         text-align: center;
+      }
+
+      @media (max-width: 500px) {
+        body {
+          width: 90%;
+        }
+
+        img.img {
+          margin: auto;
+        }
+
+        .close {
+          top: 1rem;
+          left: 1rem;
+        }
       }
     </style>
   </head>

@@ -1,5 +1,5 @@
 {{define "body"}}
-<h2>{{.Cur.Date}}</h2>
+<h2 class="img">{{.Cur.Date}}</h2>
 <h2><a href="/" class="close">x</a></h2>
 
 <meta property="og:title" content="{{.Cur.Date}}" />
@@ -16,7 +16,7 @@
     height: 80vh;
   "
 >
-  <img src="/static/{{.Cur.Path}}" />
+  <img class="img" src="/static/{{.Cur.Path}}" />
   <p style="text-align: center; position">{{.Cur.Caption}}</p>
 </div>
 
